@@ -24,3 +24,30 @@ public:
         return ans;
     }
 };
+
+// space optimised
+class Solution
+{
+public:
+    int maxCharGap(string &s)
+    {
+        // code here
+        int n = s.size();
+        int ans = -1;
+        vector<int> pos(26, -1);
+
+        for (int i = 0; i < n; i++)
+        {
+            if (pos[s[i] - 'a'] == -1)
+            {
+                pos[s[i] - 'a'] = i;
+            }
+            else
+            {
+                ans = max(ans, i - pos[s[i] - 'a'] - 1);
+            }
+        }
+
+        return ans;
+    }
+};
