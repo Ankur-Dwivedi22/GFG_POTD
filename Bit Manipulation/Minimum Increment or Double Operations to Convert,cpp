@@ -1,0 +1,15 @@
+class Solution {
+  public:
+    int countMinOperations(vector<int>& arr) {
+        // code here
+        int ans = 0 ,mx = -1;
+        for(int e : arr){
+            int setbit = __builtin_popcount(e);
+            mx = max(mx, e);
+            ans += setbit;
+        }
+        
+        ans += log2(mx);
+        return ans;
+    }
+};
